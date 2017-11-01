@@ -3,6 +3,10 @@
   "version": "1.0.0",
   "description": "Oakland FB Dev Circle chatbot tutorial",
   "main": "app.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/devcfacebook/oakbot-intro"
+  },
   "scripts": {
     "start": "node app.js"
   },
