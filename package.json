@@ -1,0 +1,16 @@
+{
+  "name": "oak-bot",
+  "version": "1.0.0",
+  "description": "Oakland FB Dev Circle chatbot tutorial",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "keywords": [
+    "chatbot",
+    "oakland",
+    "messenger"
+  ],
+  "author": "Ife Ajiboye <ajiboyeifedayo@gmail.com>",
+  "license": "MIT"
+}
