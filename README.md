@@ -18,21 +18,102 @@ A guide to creating chatbots and conversational interfaces
 
 Clone this repo and install dependencies
 ```bash
-git clone
-cd oak-bot
+git clone https://github.com/devcfacebook/oakbot-intro
+cd oakbot-intro
 npm install
 ```
 
 ## Getting started
 
-Start up your bot server
+### Set up your environment variables
+* Create a .env file within the directory
+* Copy the contents from the .env.example into the .env file
+
+These variables are necessary to have a functioning server. We will update the values later
+
+### Start up your app server
 ```bash
 npm start
 ```
 
-Within another terminal tab or window, start up the ngrok server
+Browse to the webhook route on your [localhost](http://localhost:5000/webhook)
+
+*At this point, your browser should show a 'Forbidden' status and your server should output an error message stating: 'Failed validation. Validation token mismatch'*
+
+### Start up the ngrok server within another terminal 
 ```bash
 ngrok http 5000
 ```
 
-# Messenger Platform 
+Browse to the webhook route on the public url provided to you by ngrok, e.g. <https://99fca400.ngrok.io/webhook>
+
+Confirm that you recieve the same status and log message as earlier
+
+Now let's deploy our bot so we can start interacting with it!
+
+# Messenger Platform for Bots 
+
+To build a bot on the Messenger platform, the following items are necessary:
+
+> Facebook Page: A Facebook Page will be used as the identity of your bot. When people chat with your app, they will see the Page name and the Page profile picture
+
+> Facebook Developer Account: Your developer account is required to create new apps, which are the core of any Facebook integration
+
+> Facebook App: The Facebook app contains the settings for your Messenger bot, including access tokens
+
+> Webhook URL: Actions that take place in conversations with your bot, such as new messages are sent as events to your webhook
+
+## Create a FB page
+
+<https://www.facebook.com/pages/create>
+
+## Create a FB developer account and a FB app
+
+<https://developers.facebook.com/apps/>
+
+## Add messenger capabilities to FB app
+
+ Go to the App Dashboard and under Product Settings on the bottom left corner, click "Add Product" and select "Messenger"
+
+ ![](https://scontent-mia3-2.xx.fbcdn.net/v/t39.2178-6/12995587_195576307494663_824949235_n.png?oh=2c4beb8b65bbe674b9d02e55baded4fb&oe=5A7C24C3)
+
+## Connect FB app with bot server
+
+* Within your file directory, update the VALIDATION_TOKEN in the .env file to any value you desire 
+
+* On the Messenger page, browse to the Webhooks section, and select "Setup Webhooks"
+
+![](https://scontent-mia3-2.xx.fbcdn.net/v/t39.2178-6/13331609_660771177408445_306127577_n.png?oh=b2c73c9b6a96d514e26b312d507df043&oe=5A87674C)
+
+* Enter your ngrok url with the webhook route (e.g. <https://99fca400.ngrok.io/webhook>) into the callback url field
+
+* Enter the value of your VALIDATION_TOKEN into the verify token field
+
+* Within the subscription fields section, select the messages and messaging_postbacks option
+
+![](https://scontent-mia3-2.xx.fbcdn.net/v/t39.2178-6/12057143_211110782612505_894181129_n.png?oh=566821dc645b301f1356be2c1c7c35ef&oe=5A78B2F1)
+
+## Collect app secret
+* At the top of the dashboard, browse to the App Secret section and click on show
+* Copy the app secret and use it to set the APP_SECRET variable within your .env file
+
+
+## Collect page access token
+
+* Scroll to the Token Generation section and select your page
+* Copy the generated page access token and use as the value for the PAGE_ACCESS_TOKEN variable in your .env file  
+
+![](https://scontent-mia3-2.xx.fbcdn.net/v/t39.2178-6/12995543_1164810200226522_2093336718_n.png?oh=27f1f08c8e2ee6139f1a93d24d92aece&oe=5A476D09)
+	 
+## Link messenger app to page
+
+Browse to the Webhooks section and select your page to forward the messaging and postback events to your the webhook route
+
+![enter image description here](https://scontent-mia3-2.xx.fbcdn.net/v/t39.2178-6/13421551_1702530599996541_471321650_n.png?oh=60b2566071cfb9662ce3c303d3ab3d8e&oe=5A4E859F)
+
+
+# Wrapping it up 
+
+Restart your bot server to begin receiving content from your FB messenger app
+
+Send a message as a visitor to your FB page and watch the message be echoed back to you
