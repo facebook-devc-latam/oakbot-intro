@@ -145,6 +145,9 @@ Follow these steps to quickly access your bot through Facebook:
 
 1) Navigate to the [following tutorial](https://devcenter.heroku.com/articles/getting-started-with-nodejs#introduction) to deploy your Bot Server to Heroku.
 
-2) Once you go through those steps, make sure to add your APP_SECRET, PAGE_TOKEN, AND VALIDATION_TOKEN to your [config variables](https://devcenter.heroku.com/articles/config-vars).
+2) Once you go through those steps, make sure to do the following APP_SECRET, PAGE_TOKEN, AND VALIDATION_TOKEN to your [config variables](https://devcenter.heroku.com/articles/config-vars).
 
-3) Navigate to the Messenger Platform in your Browser and scroll down to WebHooks. Click on 'edit subscription' and update your WebHook link to point to your Heroku link + /webhook
+3) You stopped running your instance of ngrok so that heroku can use the port
+
+
+4) Navigate to the Messenger Platform in your Browser and scroll down to WebHooks. Click on 'edit subscription' and update your WebHook link to point to your Heroku link + /webhook
