@@ -1,4 +1,4 @@
-# Beginner Chabot Development
+# Beginner Chatbot Development
 A guide to creating chatbots and conversational interfaces
 
 ## Prerequisites
@@ -11,8 +11,14 @@ A guide to creating chatbots and conversational interfaces
     
     ```bash
     npm install -g ngrok
+    
     ```
     If your package manager of choice is Homebrew, install via `brew install ngrok`
+
+    If it's your first time globally downloading a package using Node OR you're getting EACCES/permission denied you will need to update your permissions: 
+
+    https://docs.npmjs.com/getting-started/fixing-npm-permissions
+
 
 ## Installation
 
@@ -26,26 +32,34 @@ npm install
 ## Getting started
 
 ### Set up your environment variables
+
 * Create a .env file within the directory
 * Copy the contents from the .env.example into the .env file
 
 These variables are necessary to have a functioning server. We will update the values later
+
+### Install npm modules to local file
+
+```bash
+npm install
+```
 
 ### Start up your app server
 ```bash
 npm start
 ```
 
-Browse to the webhook route on your [localhost](http://localhost:5000/webhook)
+In the browser, navigate to the webhook route on your [localhost](http://localhost:5000/webhook)
 
 *At this point, your browser should show a 'Forbidden' status and your server should output an error message stating: 'Failed validation. Validation token mismatch'*
+
 
 ### Start up the ngrok server within another terminal 
 ```bash
 ngrok http 5000
 ```
 
-Browse to the webhook route on the public url provided to you by ngrok, e.g. <https://99fca400.ngrok.io/webhook>
+In the browser, navigate to your webhook route on the public url provided to you by ngrok, e.g. <https://99fca400.ngrok.io/webhook>
 
 Confirm that you recieve the same status and log message as earlier
 
@@ -116,4 +130,21 @@ Browse to the Webhooks section and select your page to forward the messaging and
 
 Restart your bot server to begin receiving content from your FB messenger app
 
-Send a message as a visitor to your FB page and watch the message be echoed back to you
+Send a message as a visitor to your FB page and watch the message be echoed back to you. 
+
+Follow these steps to quickly access your bot through Facebook:
+
+1) Navigate to your Facebook Page and click the 'add a username' under the profile picture.
+
+2) Add a username, preferrably the same name of your Bot
+
+3) You should now be given a link to your Bot. Navigate to that link, and send a message to your bot. 
+
+
+# Deploying Your Bot
+
+1) Navigate to the [following tutorial](https://devcenter.heroku.com/articles/getting-started-with-nodejs#introduction) to deploy your Bot Server to Heroku.
+
+2) Once you go through those steps, make sure to add your APP_SECRET, PAGE_TOKEN, AND VALIDATION_TOKEN to your [config variables](https://devcenter.heroku.com/articles/config-vars).
+
+3) Navigate to the Messenger Platform in your Browser and scroll down to WebHooks. Click on 'edit subscription' and update your WebHook link to point to your Heroku link + /webhook
