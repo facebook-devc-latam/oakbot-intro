@@ -154,3 +154,5 @@ Follow these steps to quickly access your bot through Facebook:
 
 
 4) Navigate to the Messenger Platform in your Browser and scroll down to WebHooks. Click on 'edit subscription' and update your WebHook link to point to your Heroku link + /webhook
+
+ *Troubleshooting: You may need to wait 5-10 minutes for Heroku to deploy your app. 
