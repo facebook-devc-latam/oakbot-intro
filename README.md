@@ -26,7 +26,6 @@ Clone this repo and install dependencies
 ```bash
 git clone https://github.com/devcfacebook/oakbot-intro
 cd oakbot-intro
-npm install
 ```
 
 ## Getting started
