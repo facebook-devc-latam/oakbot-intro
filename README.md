@@ -8,14 +8,14 @@ A guide to creating chatbots and conversational interfaces
 * ngrok
 
     >ngrok creates a secure public URL to a local webserver on your machine. Iterate quickly with immediate feedback without interrupting flow.
-    
+
     ```bash
     npm install -g ngrok
-    
+
     ```
     If your package manager of choice is Homebrew, install via `brew cask install ngrok`
 
-    If it's your first time globally downloading a package using Node OR you're getting EACCES/permission denied you will need to update your permissions: 
+    If it's your first time globally downloading a package using Node OR you're getting EACCES/permission denied you will need to update your permissions:
 
     https://docs.npmjs.com/getting-started/fixing-npm-permissions
 
@@ -53,7 +53,7 @@ In the browser, navigate to the webhook route on your [localhost](http://localho
 *At this point, your browser should show a 'Forbidden' status and your server should output an error message stating: 'Failed validation. Validation token mismatch'*
 
 
-### Start up the ngrok server within another terminal 
+### Start up the ngrok server within another terminal
 
 ```bash
 ngrok http 5000
@@ -63,9 +63,9 @@ In the browser, navigate to your webhook route on the public url provided to you
 
 Confirm that you receive the same status and log message as earlier
 
-Now let's deploy our bot so we can start interacting with it!
+Now let's connect our bot to the Facebook Developer platform so we can start interacting with it!
 
-# Messenger Platform for Bots 
+# Messenger Platform for Bots
 
 To build a bot on the Messenger platform, the following items are necessary:
 
@@ -93,7 +93,7 @@ To build a bot on the Messenger platform, the following items are necessary:
 
 ## Connect FB app with bot server
 
-* Within your file directory, update the VALIDATION_TOKEN in the .env file to any value you desire 
+* Within your file directory, update the VALIDATION_TOKEN in the .env file to any value you desire
 
 * On the Messenger page, browse to the Webhooks section, and select "Setup Webhooks"
 
@@ -121,7 +121,7 @@ To build a bot on the Messenger platform, the following items are necessary:
 * Copy the generated `Page Access Token` and use as the value for the `PAGE_ACCESS_TOKEN` variable in your `.env` file
 
 ![](https://scontent-mia3-2.xx.fbcdn.net/v/t39.2178-6/12995543_1164810200226522_2093336718_n.png?oh=27f1f08c8e2ee6139f1a93d24d92aece&oe=5A476D09)
-	 
+
 ## Link messenger app to page
 
 Browse to the Webhooks section and select your page to forward the messaging and postback events to your the webhook route. Click `Subscribe`
@@ -129,30 +129,33 @@ Browse to the Webhooks section and select your page to forward the messaging and
 ![enter image description here](https://scontent-mia3-2.xx.fbcdn.net/v/t39.2178-6/13421551_1702530599996541_471321650_n.png?oh=60b2566071cfb9662ce3c303d3ab3d8e&oe=5A4E859F)
 
 
-# Wrapping it up 
+# Wrapping it up
 
 Restart your bot server (the terminal running `npm start`) to begin receiving content from your FB messenger app. Do not restart ngrok as this will change your URL!
 
-Send a message as a visitor to your FB page and watch the message be echoed back to you. 
+Send a message as a visitor to your FB page and watch the message be echoed back to you.
+
+* Click on the More Options icon to the right of the Share button, then click on `View as Page Visitor` in the dropdown menu
+
+* Click on `Send Message`, type in a message, and confirm that your message has been echoed
 
 Follow these steps to quickly access your bot through Facebook:
 
 1) Navigate to your Facebook Page and click the 'add a username' under the profile picture.
 
-2) Add a username, preferrably the same name of your Bot
+2) Add a username, preferably the same name of your Bot
 
-3) You should now be given a link to your Bot. Navigate to that link, and send a message to your bot. 
+3) You should now be given a link to your Bot. Navigate to that link, and send a message to your bot.
 
 
-# Deploying Your Bot
+# Deploying Your Bot to Heroku
 
 1) Navigate to the [following tutorial](https://devcenter.heroku.com/articles/getting-started-with-nodejs#introduction) to deploy your Bot Server to Heroku.
 
-2) Once you go through those steps, make sure to do the following APP_SECRET, PAGE_ACCESS_TOKEN, AND VALIDATION_TOKEN to your [config variables](https://devcenter.heroku.com/articles/config-vars).
+2) Once you go through those steps, make sure to add `APP_SECRET`, `PAGE_ACCESS_TOKEN`, AND `VALIDATION_TOKEN` to your [config variables](https://devcenter.heroku.com/articles/config-vars).
 
-3) You stopped running your instance of ngrok so that heroku can use the port
+3) Stop your ngrok instance so that Heroku can use the port
 
+4) Navigate to the Messenger Platform in your Browser and scroll down to WebHooks. Click on `Edit Subscription` and update your WebHook link to point to your Heroku link + /webhook
 
-4) Navigate to the Messenger Platform in your Browser and scroll down to WebHooks. Click on 'edit subscription' and update your WebHook link to point to your Heroku link + /webhook
-
- *Troubleshooting: You may need to wait 5-10 minutes for Heroku to deploy your app. 
+ *Troubleshooting: You may need to wait 5-10 minutes for Heroku to deploy your app.
