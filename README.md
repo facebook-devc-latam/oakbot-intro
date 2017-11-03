@@ -13,7 +13,7 @@ A guide to creating chatbots and conversational interfaces
     npm install -g ngrok
     
     ```
-    If your package manager of choice is Homebrew, install via `brew install ngrok`
+    If your package manager of choice is Homebrew, install via `brew cask install ngrok`
 
     If it's your first time globally downloading a package using Node OR you're getting EACCES/permission denied you will need to update your permissions: 
 
@@ -33,8 +33,8 @@ npm install
 
 ### Set up your environment variables
 
-* Create a .env file within the directory
-* Copy the contents from the .env.example into the .env file
+* Create a `.env` file within the directory
+* Copy the contents from the `.env.example` into the `.env` file
 
 These variables are necessary to have a functioning server. We will update the values later
 
@@ -45,6 +45,7 @@ npm install
 ```
 
 ### Start up your app server
+
 ```bash
 npm start
 ```
@@ -55,13 +56,14 @@ In the browser, navigate to the webhook route on your [localhost](http://localho
 
 
 ### Start up the ngrok server within another terminal 
+
 ```bash
 ngrok http 5000
 ```
 
-In the browser, navigate to your webhook route on the public url provided to you by ngrok, e.g. <https://99fca400.ngrok.io/webhook>
+In the browser, navigate to your webhook route on the public url provided to you by ngrok in your Terminal, e.g. <https://99fca400.ngrok.io/webhook>
 
-Confirm that you recieve the same status and log message as earlier
+Confirm that you receive the same status and log message as earlier
 
 Now let's deploy our bot so we can start interacting with it!
 
@@ -99,7 +101,7 @@ To build a bot on the Messenger platform, the following items are necessary:
 
 ![](https://scontent-mia3-2.xx.fbcdn.net/v/t39.2178-6/13331609_660771177408445_306127577_n.png?oh=b2c73c9b6a96d514e26b312d507df043&oe=5A87674C)
 
-* Enter your ngrok url with the webhook route (e.g. <https://99fca400.ngrok.io/webhook>) into the callback url field
+* Enter your ngrok url, with the `/webhook` route added (e.g. <https://99fca400.ngrok.io/webhook>) into the callback url field
 
 * Enter the value of your VALIDATION_TOKEN into the verify token field
 
@@ -107,28 +109,31 @@ To build a bot on the Messenger platform, the following items are necessary:
 
 ![](https://scontent-mia3-2.xx.fbcdn.net/v/t39.2178-6/12057143_211110782612505_894181129_n.png?oh=566821dc645b301f1356be2c1c7c35ef&oe=5A78B2F1)
 
-## Collect app secret
-* At the top of the dashboard, browse to the App Secret section and click on show
-* Copy the app secret and use it to set the APP_SECRET variable within your .env file
+* Troubleshooting: Restart `npm start` and `ngrok http 5000`. Note: This will change your ngrok URL
+
+## Collect App Secret
+
+* On the left hand side, go to `Settings`, browse to the `App Secret` section and click on `Show`
+* Copy the `App Secret` and use it to set the `APP_SECRET` variable within your `.env` file
 
 
 ## Collect page access token
 
-* Scroll to the Token Generation section and select your page
-* Copy the generated page access token and use as the value for the PAGE_ACCESS_TOKEN variable in your .env file  
+* On the left hand side, go to `Messenger`, browse to the `Token Generation` section and select your page
+* Copy the generated `Page Access Token` and use as the value for the `PAGE_ACCESS_TOKEN` variable in your `.env` file
 
 ![](https://scontent-mia3-2.xx.fbcdn.net/v/t39.2178-6/12995543_1164810200226522_2093336718_n.png?oh=27f1f08c8e2ee6139f1a93d24d92aece&oe=5A476D09)
 	 
 ## Link messenger app to page
 
-Browse to the Webhooks section and select your page to forward the messaging and postback events to your the webhook route
+Browse to the Webhooks section and select your page to forward the messaging and postback events to your the webhook route. Click `Subscribe`
 
 ![enter image description here](https://scontent-mia3-2.xx.fbcdn.net/v/t39.2178-6/13421551_1702530599996541_471321650_n.png?oh=60b2566071cfb9662ce3c303d3ab3d8e&oe=5A4E859F)
 
 
 # Wrapping it up 
 
-Restart your bot server to begin receiving content from your FB messenger app
+Restart your bot server (the terminal running `npm start`) to begin receiving content from your FB messenger app. Do not restart ngrok as this will change your URL!
 
 Send a message as a visitor to your FB page and watch the message be echoed back to you. 
 
