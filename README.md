@@ -20,15 +20,14 @@ A guide to creating chatbots and conversational interfaces
     https://docs.npmjs.com/getting-started/fixing-npm-permissions
 
 
-## Installation
 
-Clone this repo and install dependencies
+## Getting started
+
+### Clone this repo and migrate to the directory
 ```bash
 git clone https://github.com/devcfacebook/oakbot-intro
 cd oakbot-intro
 ```
-
-## Getting started
 
 ### Set up your environment variables
 
