@@ -178,7 +178,12 @@ function processMessageFromPage(event) {
         // handle 'help' as a special case
         sendHelpOptionsAsQuickReplies(senderID);
         break;
-      
+      case 'cool':
+        sendCoolOptionsAsQuickReplies(senderID);
+        break;
+      case 'test':
+        sendTestOptions(senderID);
+        break;
       default:
         // otherwise, just echo it back to the sender
         sendTextMessage(senderID, messageText);
@@ -221,6 +226,38 @@ function sendHelpOptionsAsQuickReplies(recipientId) {
           "payload":"QR_BACKGROUND_1" 
         }
       ]
+    }
+  };
+  callSendAPI(messageData);
+}
+function sendCoolOptionsAsQuickReplies(recipientId) {
+  console.log("[sendCoolOptionsAsQuickReplies] Sending cool options menu"); 
+  var messageData = {
+    recipient: {
+      id: recipientId
+    },
+    message: {
+      text: "This is going to be fun",
+      quick_replies: [
+        { 
+          "content_type":"text",
+          "title":"Cool Jams",
+          "payload":"QR_ROTATION_1" 
+        },
+      ]
+    }
+  };
+  callSendAPI(messageData);
+}
+
+function sendTestOptions(recipientId) {
+  console.log("[sendTest] Sending test options"); 
+  var messageData = {
+    recipient: {
+      id: recipientId
+    },
+    message: {
+      text: "This is a test. Testing 1, 2, 4...."
     }
   };
   callSendAPI(messageData);
