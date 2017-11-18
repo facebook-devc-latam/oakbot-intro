@@ -22,6 +22,7 @@
     "dotenv": "^4.0.0",
     "ejs": "^2.5.7",
     "express": "^4.16.2",
+    "node-schedule": "^1.2.5",
     "request": "^2.83.0"
   }
 }
